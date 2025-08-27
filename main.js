@@ -11,7 +11,7 @@ const api = {
       getResults(searchbox.value);
     }
   }
-  
+//commments  
   function getResults (query) {
     fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then (response => response.json())
@@ -67,6 +67,6 @@ const api = {
     let date = d.getDate();
     let month = months[d.getMonth()];
     let year = d.getFullYear();
-  
+ 	//console/log("Tesint new Thing" 
     return `${day} ${date} ${month} ${year}`;
   }
