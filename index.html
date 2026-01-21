@@ -3,26 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
+  <title>Weather Dashboard</title>
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
   <div class="app-wrap">
+    <!-- Header with search -->
     <header>
-      <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city..." />
-    </header>
-    <main>
-      <section class="location">
-        <div class="city">Kolkata, India</div>
-        <div class="date"> Tuesday 11 Feb 2025</div>
-      </section>
-      <div class="current">
-        <div class="temp">15<span>°c</span></div>
-        <div class="weather">Sunny</div>
-        <div class="hi-low">13°c / 16°c</div>
+      <div class="header-content">
+        <h1>Weather Dashboard</h1>
+        <div class="search-container">
+          <input 
+            type="text" 
+            autocomplete="off" 
+            class="search-box" 
+            placeholder="Search for a city..." 
+            aria-label="Search for a city"
+          />
+          <button class="search-btn" aria-label="Search">🔍</button>
+        </div>
+        <div class="unit-toggle">
+          <button class="unit-btn" data-unit="celsius" aria-pressed="true">°C</button>
+          <button class="unit-btn" data-unit="fahrenheit" aria-pressed="false">°F</button>
+        </div>
       </div>
+    </header>
+
+    <!-- Loading and error states -->
+    <div class="loading hidden" aria-live="polite" role="status">
+      <div class="spinner"></div>
+      <p>Loading weather data...</p>
+    </div>
+
+    <div class="error-message hidden" aria-live="assertive" role="alert"></div>
+
+    <!-- Main content -->
+    <main>
+      <!-- Current weather section -->
+      <section class="current-weather">
+        <div class="location">
+          <div class="city">Enter a city name</div>
+          <div class="date"></div>
+        </div>
+        <div class="current">
+          <div class="temp-container">
+            <div class="temp"><span class="temp-value">--</span><span class="unit">°C</span></div>
+            <div class="weather-icon">🌤️</div>
+          </div>
+          <div class="weather-info">
+            <div class="weather">--</div>
+            <div class="hi-low">-- / --</div>
+            <div class="additional-info">
+              <div class="info-item">
+                <span class="label">Feels Like:</span>
+                <span class="value feels-like">--</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Humidity:</span>
+                <span class="value humidity">--</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Wind:</span>
+                <span class="value wind">--</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Pressure:</span>
+                <span class="value pressure">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5-day forecast section -->
+      <section class="forecast-section">
+        <h2>5-Day Forecast</h2>
+        <div class="forecast-container" role="region" aria-label="5-day weather forecast">
+          <!-- Forecast cards will be populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Recent searches -->
+      <section class="recent-searches">
+        <h3>Recent Searches</h3>
+        <div class="recent-list" role="list">
+          <!-- Recent searches will be populated by JavaScript -->
+        </div>
+      </section>
     </main>
   </div>
+
   <script src="main.js"></script>
 </body>
 </html>
